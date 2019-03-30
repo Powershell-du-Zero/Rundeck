@@ -70,7 +70,7 @@ Connect-Rundeck -Protocol http -Server '1.1.1.1' -Port '4440' -Token 'wbh4thTlW6
 - [ ] Key Storage
     - [ ] Upload keys
     - [x] List keys
-    - [ ] Get Key Metadata
+    - [x] Get Key Metadata
     - [ ] Get Key Contents
     - [x] Delete Keys
 - [ ] Projects
