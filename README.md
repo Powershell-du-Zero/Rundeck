@@ -41,7 +41,7 @@ Connect-Rundeck -Protocol http -Server '1.1.1.1' -Port '4440' -Token 'wbh4thTlW6
 
 ## Spec Progress
 
-- [ ] System Info
+- [x] System Info
 - [ ] List Metrics
     - [ ] Metrics Links
     - [ ] Metrics Data
