@@ -44,7 +44,7 @@ Connect-Rundeck -Protocol http -Server '1.1.1.1' -Port '4440' -Token 'wbh4thTlW6
 - [x] System Info
 - [ ] List Metrics
     - [ ] Metrics Links
-    - [ ] Metrics Data
+    - [x] Metrics Data
     - [x] Metrics Healthcheck
     - [x] Metrics Threading
     - [x] Metrics Ping
