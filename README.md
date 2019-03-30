@@ -75,9 +75,9 @@ Connect-Rundeck -Protocol http -Server '1.1.1.1' -Port '4440' -Token 'wbh4thTlW6
     - [ ] Get Key Contents
     - [ ] Delete Keys
 - [ ] Projects
-    - [ ] Listing Projects
+    - [x] Listing Projects
     - [ ] Project Creation
-    - [ ] Getting Project Info
+    - [x] Getting Project Info
     - [ ] Project Deletion
     - [ ] Project Configuration
     - [ ] Project Configuration Keys
