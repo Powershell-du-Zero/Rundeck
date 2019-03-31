@@ -24,7 +24,10 @@ function Get-RundeckProject
         System.Management.Automation.PSObject
 
         .OUTPUTS
-        System.Object
+        RundeckProjectSummary
+
+        .OUTPUTS
+        RundeckProjectDetail
 
         .COMPONENT
         Rundeck API
@@ -35,7 +38,8 @@ function Get-RundeckProject
     #>
 
     [CmdletBinding()]
-    [OutputType( [System.Object] )]
+    [OutputType( [RundeckProjectSummary[]] )]
+    [OutputType( [RundeckProjectDetail] )]
     Param(
         [Parameter(
             Position = 0,
@@ -68,7 +72,7 @@ function Get-RundeckProject
                 $requestData = $request.Get()
 
                 # Return Executions data
-                $requestData
+                [RundeckProjectDetail]$requestData
             }
         }
         else
@@ -78,7 +82,7 @@ function Get-RundeckProject
             $requestData = $request.Get()
 
             # Return data
-            $requestData
+            [RundeckProjectSummary[]]$requestData
         }
     }
 
