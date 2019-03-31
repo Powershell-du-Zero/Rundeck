@@ -27,7 +27,7 @@ function New-RundeckProject
         System.Management.Automation.PSObject
 
         .OUTPUTS
-        System.Object
+        RundeckProjectDetail
 
         .COMPONENT
         Rundeck API
@@ -38,7 +38,7 @@ function New-RundeckProject
     #>
 
     [CmdletBinding()]
-    [OutputType( [System.Object] )]
+    [OutputType( [RundeckProjectDetail] )]
     Param(
         [Parameter(
             Position = 0,
@@ -79,7 +79,7 @@ function New-RundeckProject
             $requestData = $request.Post()
 
             # Return Executions data
-            $requestData
+            [RundeckProjectDetail]$requestData
         }
         else
         {
