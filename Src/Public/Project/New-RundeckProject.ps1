@@ -5,11 +5,11 @@ function New-RundeckProject
         .SYNOPSIS
         List the existing projects on the server
 
-        .DESCRIPTION
-        n/a
-
         .PARAMETER Name
         Get information about a specific project
+
+        .PARAMETER Raw
+        Switch to return data without transformation
 
         .PARAMETER Config
         n/a
@@ -55,7 +55,14 @@ function New-RundeckProject
             ValueFromPipelineByPropertyName = $true
         )]
         [System.Collections.Hashtable]
-        $Config
+        $Config,
+
+        [Parameter(
+            Position = 2,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
+        )]
+        [Switch]$Raw
     )
 
     begin
@@ -67,7 +74,7 @@ function New-RundeckProject
 
     process
     {
-        if( $null -eq ( Get-RundeckProject -Name $Name -ErrorAction SilentlyContinue ) )
+        if ( $null -eq ( Get-RundeckProject -Name $Name -ErrorAction SilentlyContinue ) )
         {
             # Create instance of the [RundeckRequest]
             $request = [Rundeckrequest]::new($script:RundeckSession, $functionName)
@@ -78,8 +85,8 @@ function New-RundeckProject
             $request.BuildBody($PSBoundParameters)
             $requestData = $request.Post()
 
-            # Return Executions data
-            [RundeckProjectDetail]$requestData
+            # Return data
+            if ($Raw) { $requestData } else { [RundeckProjectDetail]$requestData }
         }
         else
         {

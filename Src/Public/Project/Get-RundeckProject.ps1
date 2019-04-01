@@ -8,6 +8,9 @@ function Get-RundeckProject
         .PARAMETER Name
         Get information about a specific project
 
+        .PARAMETER Raw
+        Switch to return data without transformation
+
         .EXAMPLE
         PS C:\> Get-RundeckProject
 
@@ -48,7 +51,14 @@ function Get-RundeckProject
         )]
         [ValidateNotNullOrEmpty()]
         [System.String[]]
-        $Name
+        $Name,
+
+        [Parameter(
+            Position = 1,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
+        )]
+        [Switch]$Raw
     )
 
     begin
@@ -63,16 +73,16 @@ function Get-RundeckProject
         # Create instance of the [RundeckRequest]
         $request = [Rundeckrequest]::new($script:RundeckSession, $functionName)
 
-        if( $null -ne $Name )
+        if ( $null -ne $Name )
         {
-            foreach($projectName in $Name)
+            foreach ($projectName in $Name)
             {
                 # Build and send request
                 $request.BuildEndpoint($projectName)
                 $requestData = $request.Get()
 
                 # Return Executions data
-                [RundeckProjectDetail]$requestData
+                if ($Raw) { $requestData } else { [RundeckProjectDetail]$requestData }
             }
         }
         else
@@ -82,7 +92,7 @@ function Get-RundeckProject
             $requestData = $request.Get()
 
             # Return data
-            [RundeckProjectSummary[]]$requestData
+            if ($Raw) { $requestData } else { [RundeckProjectSummary[]]$requestData }
         }
     }
 
