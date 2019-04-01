@@ -6,7 +6,7 @@ Class RundeckProjectSummary
     [System.String]$Label
 
     # Constructor
-    RundeckProject( [System.Object] $Source )
+    RundeckProjectSummary( [System.Object] $Source )
     {
         $this.Name = $Source.Name
         $this.Description = $Source.Description
@@ -65,7 +65,7 @@ Class RundeckStorageKey
         $this.Path = $Source.Path -replace 'keys/'
         $this.Type = $Source.Type
         $this.Name = $Source.Name
-        if($Source.Meta)
+        if ($Source.Meta)
         {
             $this.Meta = [RundeckStorageKeyMeta]$Source.Meta
         }
