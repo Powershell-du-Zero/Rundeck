@@ -7,7 +7,7 @@ function Get-RundeckStorageKeyMetadata
         .PARAMETER Path
         Define the directory path of your stored key file
 
-        .PARAMETER Detail
+        .PARAMETER Raw
         Switch to return data without transformation
 
         .EXAMPLE
@@ -25,6 +25,9 @@ function Get-RundeckStorageKeyMetadata
         .OUTPUTS
         System.Object
 
+        .OUTPUTS
+        RundeckStorageKeyMeta
+
         .COMPONENT
         Rundeck API
 
@@ -35,6 +38,7 @@ function Get-RundeckStorageKeyMetadata
 
     [CmdletBinding()]
     [OutputType( [System.Object] )]
+    [OutputType( [RundeckStorageKeyMeta] )]
     Param(
         [Parameter(
             Position = 0,
@@ -48,7 +52,7 @@ function Get-RundeckStorageKeyMetadata
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Switch]$Detail
+        [Switch]$Raw
     )
 
     begin
@@ -59,22 +63,17 @@ function Get-RundeckStorageKeyMetadata
 
     process
     {
-        # Create instance of the [RundeckRequest]
-        $request = [Rundeckrequest]::new($script:RundeckSession, $functionName)
-
-        # Build and send request
-        $request.BuildEndpoint($Path)
-        $requestData = $request.Get()
-
-        if($Detail)
+        foreach ($keyPath in $Path)
         {
-            # Return data without transformation
-            $requestData
-        }
-        else
-        {
+            # Create instance of the [RundeckRequest]
+            $request = [Rundeckrequest]::new($script:RundeckSession, $functionName)
+
+            # Build and send request
+            $request.BuildEndpoint($keyPath)
+            $requestData = $request.Get()
+
             # Return data
-            $requestData.meta
+            if ($Raw) { $requestData } else { [RundeckStorageKeyMeta]$requestData.meta }
         }
     }
 

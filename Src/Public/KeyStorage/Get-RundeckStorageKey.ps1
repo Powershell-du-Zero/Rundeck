@@ -7,7 +7,7 @@ function Get-RundeckStorageKey
         .PARAMETER Path
         Define the directory path of your key storage
 
-        .PARAMETER Detail
+        .PARAMETER Raw
         Switch to return data without transformation
 
         .EXAMPLE
@@ -25,6 +25,9 @@ function Get-RundeckStorageKey
         .OUTPUTS
         System.Object
 
+        .OUTPUTS
+        RundeckStorageKey
+
         .COMPONENT
         Rundeck API
 
@@ -35,6 +38,7 @@ function Get-RundeckStorageKey
 
     [CmdletBinding()]
     [OutputType( [System.Object] )]
+    [OutputType( [RundeckStorageKey[]] )]
     Param(
         [Parameter(
             Position = 0,
@@ -48,7 +52,7 @@ function Get-RundeckStorageKey
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Switch]$Detail
+        [Switch]$Raw
     )
 
     begin
@@ -62,22 +66,14 @@ function Get-RundeckStorageKey
         # Create instance of the [RundeckRequest]
         $request = [Rundeckrequest]::new($script:RundeckSession, $functionName)
 
-        foreach($storagePath in $Path)
+        foreach ($storagePath in $Path)
         {
             # Build and send request
             $request.BuildEndpoint($storagePath)
             $requestData = $request.Get()
 
-            if($Detail)
-            {
-                # Return data without transformation
-                $requestData
-            }
-            else
-            {
-                # Return data
-                $requestData.resources
-            }
+            # Return data
+            if ($Raw) { $requestData } else { [RundeckStorageKey[]]$requestData.resources }
         }
     }
 
