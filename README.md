@@ -49,7 +49,7 @@ Connect-Rundeck -Protocol http -Server '1.1.1.1' -Port '4440' -Token 'wbh4thTlW6
     - [x] Metrics Ping
 - [ ] User Profile
 - [ ] Log Storage
-- [ ] Execution Mode
+- [x] Execution Mode
 - [ ] Cluster Mode
 - [ ] ACLs
 - [ ] Jobs

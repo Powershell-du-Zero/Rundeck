@@ -257,4 +257,14 @@
         ContentType = 'application/json'
         SuccessCode = 200
     }
+    'Set-RundeckExecutionMode'= @{
+        Method      = 'POST'
+        Endpoint    = @(
+            '/api/14/system/executions/{first}'
+        )
+        Header      = @{}
+        Body        = @{}
+        ContentType = 'application/json'
+        SuccessCode = 200
+    }
 }
