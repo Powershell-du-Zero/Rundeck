@@ -1,4 +1,4 @@
-function Get-RundeckStorageKeyMetadata
+function Get-RundeckKeyMetadata
 {
     <#
         .SYNOPSIS
@@ -11,16 +11,16 @@ function Get-RundeckStorageKeyMetadata
         Switch to return data without transformation
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKeyMetadata
+        PS C:\> Get-RundeckKeyMetadata
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKeyMetadata -Path 'ANVILS-ONLINE'
+        PS C:\> Get-RundeckKeyMetadata -Path 'ANVILS-ONLINE'
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKeyMetadata -Path @('ANVILS-ONLINE', 'E-OPTIONS')
+        PS C:\> Get-RundeckKeyMetadata -Path @('ANVILS-ONLINE', 'E-OPTIONS')
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKeyMetadata -Path @('ANVILS-ONLINE', 'E-OPTIONS') -Detail
+        PS C:\> Get-RundeckKeyMetadata -Path @('ANVILS-ONLINE', 'E-OPTIONS') -Detail
 
         .OUTPUTS
         System.Object
@@ -32,7 +32,7 @@ function Get-RundeckStorageKeyMetadata
         Rundeck API
 
         .NOTES
-        - File Name : Get-RundeckStorageKeyMetadata.ps1
+        - File Name : Get-RundeckKeyMetadata.ps1
         - Author    : Thomas ILLIET
     #>
 
