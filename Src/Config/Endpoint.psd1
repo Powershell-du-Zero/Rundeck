@@ -237,7 +237,6 @@
         Method      = 'GET'
         Endpoint    = @(
             '/api/30/user/list/'
-            '/api/30/user/info/{first}'
         )
         Header      = @{
             Accept = 'application/json'
