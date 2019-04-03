@@ -1,4 +1,4 @@
-function Get-RundeckStorageKey
+function Get-RundeckKey
 {
     <#
         .SYNOPSIS
@@ -11,16 +11,16 @@ function Get-RundeckStorageKey
         Switch to return data without transformation
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKey
+        PS C:\> Get-RundeckKey
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKey -Path 'ANVILS-ONLINE'
+        PS C:\> Get-RundeckKey -Path 'ANVILS-ONLINE'
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKey -Path @('ANVILS-ONLINE', 'E-OPTIONS')
+        PS C:\> Get-RundeckKey -Path @('ANVILS-ONLINE', 'E-OPTIONS')
 
         .EXAMPLE
-        PS C:\> Get-RundeckStorageKey -Path @('ANVILS-ONLINE', 'E-OPTIONS') -Detail
+        PS C:\> Get-RundeckKey -Path @('ANVILS-ONLINE', 'E-OPTIONS') -Detail
 
         .OUTPUTS
         System.Object
@@ -32,12 +32,13 @@ function Get-RundeckStorageKey
         Rundeck API
 
         .NOTES
-        - File Name : Get-RundeckStorageKey.ps1
+        - File Name : Get-RundeckKey.ps1
         - Author    : Thomas ILLIET
     #>
 
     [CmdletBinding()]
     [OutputType( [System.Object] )]
+    [OutputType( [RundeckStorageKeyMeta] )]
     [OutputType( [RundeckStorageKey[]] )]
     Param(
         [Parameter(
@@ -73,7 +74,22 @@ function Get-RundeckStorageKey
             $requestData = $request.Get()
 
             # Return data
-            if ($Raw) { $requestData } else { [RundeckStorageKey[]]$requestData.resources }
+            if ($Raw)
+            {
+                $requestData
+            }
+            else
+            {
+                if ($requestData.resources)
+                {
+                    [RundeckStorageKey[]]$requestData.resources
+                }
+                else
+                {
+                    [RundeckStorageKeyMeta]$requestData.meta
+                }
+
+            }
         }
     }
 
