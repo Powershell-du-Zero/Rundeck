@@ -82,4 +82,35 @@ Class RundeckStorageKey
         }
     }
 }
+
+Class RundeckUser
+{
+    [System.String]$Login
+
+    [System.String]$FirstName
+
+    [System.String]$LastName
+
+    [System.String]$Email
+
+    [Nullable[DateTime]]$CreationTime
+
+    [Nullable[DateTime]]$LastWriteTime
+
+    [Nullable[DateTime]]$LastJobTime
+
+    [System.UInt16]$Tokens
+
+    RundeckUser( $Source )
+    {
+        $this.Login = $Source.Login
+        $this.FirstName = $Source.FirstName
+        $this.LastName = $Source.LastName
+        $this.Email = $Source.Email
+        $this.CreationTime = $Source.Created
+        $this.LastWriteTime = $Source.Updated
+        $this.LastJobTime = $Source.LastJob
+        $this.Tokens = $Source.Tokens
+    }
+}
 #endregion
