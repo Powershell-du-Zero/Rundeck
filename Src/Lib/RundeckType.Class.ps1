@@ -34,38 +34,49 @@ Class RundeckProjectDetail
 Class RundeckStorageKeyMeta
 {
     [System.String]$ContentType
-    [System.String]$ContentSize
-    [Nullable[DateTime]]$CreationTime
-    [Nullable[DateTime]]$LastWriteTime
-    [System.String]$CreatedBy
-    [System.String]$ModifyBy
-    [System.String]$Type
 
+    [Nullable[DateTime]]$ContentCreationTime
+
+    [Nullable[DateTime]]$ContentLastWriteTime
+
+    [System.String]$ContentMask
+
+    [System.String]$CreatedBy
+
+    [System.String]$ModifyBy
+
+    [System.String]$KeyType
+
+    # Constructors
     RundeckStorageKeyMeta( $Source )
     {
         $this.ContentType = $Source.'Rundeck-content-type'
-        $this.ContentSize = $Source.'Rundeck-content-size'
-        $this.CreationTime = $Source.'Rundeck-content-creation-time'
-        $this.LastWriteTime = $Source.'Rundeck-content-modify-time'
+        $this.ContentCreationTime = $Source.'Rundeck-content-creation-time'
+        $this.ContentLastWriteTime = $Source.'Rundeck-content-modify-time'
+        $this.ContentMask = $Source.'Rundeck-content-mask'
         $this.CreatedBy = $Source.'Rundeck-auth-created-username'
         $this.ModifyBy = $Source.'Rundeck-auth-modified-username'
-        $this.Type = $Source.'Rundeck-key-type'
+        $this.KeyType = $Source.'Rundeck-key-type'
     }
 }
 
 Class RundeckStorageKey
 {
     [System.String]$Path
+
     [System.String]$Type
+
     [System.String]$Name
+
     [RundeckStorageKeyMeta]$Meta
 
+    # Constructors
     RundeckStorageKey( [System.Object] $Source )
     {
         $this.Path = $Source.Path -replace 'keys/'
         $this.Type = $Source.Type
         $this.Name = $Source.Name
-        if ($Source.Meta)
+        if ( [string]::IsNullOrEmpty($Source.Meta) -eq $false )
         {
             $this.Meta = [RundeckStorageKeyMeta]$Source.Meta
         }
