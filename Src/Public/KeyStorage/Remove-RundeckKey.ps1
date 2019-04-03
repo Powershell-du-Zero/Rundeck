@@ -1,4 +1,4 @@
-function Remove-RundeckStorageKey
+function Remove-RundeckKey
 {
     <#
         .SYNOPSIS
@@ -8,10 +8,10 @@ function Remove-RundeckStorageKey
         Define the directory path of your key storage
 
         .EXAMPLE
-        PS C:\> Remove-RundeckStorageKey -Path 'ANVILS-ONLINE'
+        PS C:\> Remove-RundeckKey -Path 'ANVILS-ONLINE'
 
         .EXAMPLE
-        PS C:\> Remove-RundeckStorageKey -Path @('ANVILS-ONLINE', 'E-OPTIONS')
+        PS C:\> Remove-RundeckKey -Path @('ANVILS-ONLINE', 'E-OPTIONS')
 
         .OUTPUTS
         System.Object
@@ -20,7 +20,7 @@ function Remove-RundeckStorageKey
         Rundeck API
 
         .NOTES
-        - File Name : Remove-RundeckStorageKey.ps1
+        - File Name : Remove-RundeckKey.ps1
         - Author    : Thomas ILLIET
     #>
 
