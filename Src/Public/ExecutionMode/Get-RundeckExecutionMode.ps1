@@ -37,7 +37,7 @@ function Get-RundeckExecutionMode
         try
         {
             $systemInfo = Get-RundeckSystemInfo -ErrorAction Stop
-            return [System.Boolean]$systemInfo.System.Executions.ExecutionMode.Active
+            return [System.Boolean]$systemInfo.System.Executions.Active
         }
         catch
         {
