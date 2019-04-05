@@ -3,8 +3,8 @@
     'Get-RundeckProject'            = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/projects/'
-            '/api/30/project/{first}'
+            '/api/{version}/projects/'
+            '/api/{version}/project/{first}'
         )
         Header      = @{
             Accept = 'application/json'
@@ -16,7 +16,7 @@
     'New-RundeckProject'            = @{
         Method      = 'POST'
         Endpoint    = @(
-            '/api/30/projects'
+            '/api/{version}/projects'
         )
         Header      = @{
             Accept = 'application/json'
@@ -31,7 +31,7 @@
     'Remove-RundeckProject'         = @{
         Method      = 'DELETE'
         Endpoint    = @(
-            '/api/30/project/{first}'
+            '/api/{version}/project/{first}'
         )
         Header      = @{}
         Body        = @{}
@@ -41,7 +41,7 @@
     'Get-RundeckJob'                = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/project/{first}/jobs'
+            '/api/{version}/project/{first}/jobs'
         )
         Header      = @{
             Accept = 'application/json'
@@ -53,7 +53,7 @@
     'Get-RundeckJobExecution'       = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/execution/{first}'
+            '/api/{version}/execution/{first}'
         )
         Header      = @{
             Accept = 'application/json'
@@ -65,7 +65,7 @@
     'Remove-RundeckJobExecution'    = @{
         Method      = 'DELETE'
         Endpoint    = @(
-            '/api/30/execution/{first}'
+            '/api/{version}/execution/{first}'
         )
         Header      = @{}
         Body        = @{}
@@ -75,7 +75,7 @@
     'Get-RundeckJobExecutionList'   = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/job/{first}/executions'
+            '/api/{version}/job/{first}/executions'
         )
         Header      = @{
             Accept = 'application/json'
@@ -87,9 +87,9 @@
     'Get-RundeckJobExecutionOutput' = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/execution/{first}/output'
-            '/api/30/execution/{first}/output/node/{second}'
-            '/api/30/execution/{first}/output/node/{second}/step/{third}'
+            '/api/{version}/execution/{first}/output'
+            '/api/{version}/execution/{first}/output/node/{second}'
+            '/api/{version}/execution/{first}/output/node/{second}/step/{third}'
         )
         Header      = @{
             Accept = 'application/json'
@@ -101,7 +101,7 @@
     'Get-RundeckSystemInfo'         = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/system/info'
+            '/api/{version}/system/info'
         )
         Header      = @{
             Accept = 'application/json'
@@ -113,7 +113,7 @@
     'Get-RundeckMetricHealthcheck'  = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/metrics/healthcheck'
+            '/api/{version}/metrics/healthcheck'
         )
         Header      = @{
             Accept = 'application/json'
@@ -125,7 +125,7 @@
     'Get-RundeckMetricPing'         = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/metrics/ping'
+            '/api/{version}/metrics/ping'
         )
         Header      = @{}
         Body        = @{}
@@ -135,7 +135,7 @@
     'Get-RundeckMetricThreading'    = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/metrics/threads'
+            '/api/{version}/metrics/threads'
         )
         Header      = @{}
         Body        = @{}
@@ -145,7 +145,7 @@
     'Get-RundeckMetricData'         = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/metrics/metrics'
+            '/api/{version}/metrics/metrics'
         )
         Header      = @{}
         Body        = @{}
@@ -155,7 +155,7 @@
     'Add-RundeckStorageKey' = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/storage/keys/{first}'
+            '/api/{version}/storage/keys/{first}'
         )
         Header      = @{}
         Body        = @{}
@@ -165,7 +165,7 @@
     'Get-RundeckStorageKey'         = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/storage/keys/{first}'
+            '/api/{version}/storage/keys/{first}'
         )
         Header      = @{}
         Body        = @{}
@@ -175,7 +175,7 @@
     'Get-RundeckStorageKeyMetadata' = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/storage/keys/{first}'
+            '/api/{version}/storage/keys/{first}'
         )
         Header      = @{
             Accept = 'application/json'
@@ -187,7 +187,7 @@
     'Remove-RundeckStorageKey'      = @{
         Method      = 'DELETE'
         Endpoint    = @(
-            '/api/30/storage/keys/{first}'
+            '/api/{version}/storage/keys/{first}'
         )
         Header      = @{}
         Body        = @{}
@@ -197,8 +197,8 @@
     'Get-RundeckToken'              = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/tokens/'
-            '/api/30/{first}/{second}'
+            '/api/{version}/tokens/'
+            '/api/{version}/{first}/{second}'
         )
         Header      = @{
             Accept = 'application/json'
@@ -210,7 +210,7 @@
     'New-RundeckToken'              = @{
         Method      = 'DELETE'
         Endpoint    = @(
-            '/api/30/tokens/'
+            '/api/{version}/tokens/'
         )
         Header      = @{
             Accept = 'application/json'
@@ -226,7 +226,7 @@
     'Remove-RundeckToken'           = @{
         Method      = 'DELETE'
         Endpoint    = @(
-            '/api/30/token/{first}'
+            '/api/{version}/token/{first}'
         )
         Header      = @{}
         Body        = @{}
@@ -236,7 +236,7 @@
     'Get-RundeckUser'              = @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/user/list/'
+            '/api/{version}/user/list/'
         )
         Header      = @{
             Accept = 'application/json'
@@ -248,7 +248,7 @@
     'Get-RundeckUserRole'= @{
         Method      = 'GET'
         Endpoint    = @(
-            '/api/30/user/roles'
+            '/api/{version}/user/roles'
         )
         Header      = @{
             Accept = 'application/json'
