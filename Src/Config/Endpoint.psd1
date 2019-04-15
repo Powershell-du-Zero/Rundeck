@@ -152,7 +152,7 @@
         ContentType = 'application/json'
         SuccessCode = 200
     }
-    'Add-RundeckStorageKey' = @{
+    'Add-RundeckStorageKey'         = @{
         Method      = 'GET'
         Endpoint    = @(
             '/api/{version}/storage/keys/{first}'
@@ -233,7 +233,7 @@
         ContentType = 'application/json'
         SuccessCode = 204
     }
-    'Get-RundeckUser'              = @{
+    'Get-RundeckUser'               = @{
         Method      = 'GET'
         Endpoint    = @(
             '/api/{version}/user/list/'
@@ -245,7 +245,7 @@
         ContentType = 'application/json'
         SuccessCode = 200
     }
-    'Get-RundeckUserRole'= @{
+    'Get-RundeckUserRole'           = @{
         Method      = 'GET'
         Endpoint    = @(
             '/api/{version}/user/roles'
@@ -257,7 +257,7 @@
         ContentType = 'application/json'
         SuccessCode = 200
     }
-    'Set-RundeckExecutionMode'= @{
+    'Set-RundeckExecutionMode'      = @{
         Method      = 'POST'
         Endpoint    = @(
             '/api/14/system/executions/{first}'
@@ -265,6 +265,42 @@
         Header      = @{}
         Body        = @{}
         ContentType = 'application/json'
+        SuccessCode = 200
+    }
+    'Get-RundeckReadme'      = @{
+        Method      = 'GET'
+        Endpoint    = @(
+            '/api/{version}/project/{first}/readme.md'
+        )
+        Header      = @{
+            Accept = 'application/json'
+        }
+        Body        = @{}
+        ContentType = 'application/json'
+        SuccessCode = 200
+    }
+    'Set-RundeckReadme'      = @{
+        Method      = 'PUT'
+        Endpoint    = @(
+            '/api/{version}/project/{first}/readme.md'
+        )
+        Header      = @{
+            Accept = 'application/json'
+        }
+        Body        = @{
+            Content = 'contents'
+        }
+        ContentType = 'application/json'
+        SuccessCode = 200
+    }
+    'Remove-RundeckReadme'   = @{
+        Method      = 'DELETE'
+        Endpoint    = @(
+            '/api/{version}/project/{first}/readme.md'
+        )
+        Header      = @{}
+        Body        = @{}
+        ContentType = ''
         SuccessCode = 200
     }
 }
